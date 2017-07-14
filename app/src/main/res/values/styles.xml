@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ActivityTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:windowBackground">@color/write</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <!--activity的全局关闭动画设置  -->
+    <style name="AnimationActivity" parent="@android:style/Animation.Translucent">
+        <item name="android:windowExitAnimation">@anim/right_out</item>
+    </style>
+    <style name="result_pop_scrollinner">
+        <item name="android:padding">@dimen/result_pop_padding</item>
+        <item name="android:rowHeight">12dp</item>
+    </style>
+    <style name="result_pop_scroll">
+        <item name="android:background">@color/write</item>
+    </style>
+</resources>
