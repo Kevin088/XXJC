@@ -15,6 +15,7 @@ import com.baidu.ocr.demo.FileUtil;
 import com.baidu.ocr.demo.MainActivity;
 import com.baidu.ocr.demo.R;
 import com.baidu.ocr.demo.RecognizeService;
+import com.baidu.ocr.demo.adapter.CollectData2Adapter;
 import com.baidu.ocr.demo.adapter.CollectDataAdapter;
 import com.baidu.ocr.demo.bean.CollectDataBean;
 import com.baidu.ocr.demo.bean.TableCols;
@@ -35,7 +36,8 @@ import butterknife.ButterKnife;
 
 public class CollectDatactivity extends FragmentActivity implements TitleBarView.OnTitleBarClickListener, View.OnClickListener {
 
-    CollectDataAdapter adapter;
+    //CollectDataAdapter adapter;
+    CollectData2Adapter adapter;
     ArrayList<TableCols> totalData = new ArrayList<>();
     int tableId;
     String tableName;
@@ -68,7 +70,8 @@ public class CollectDatactivity extends FragmentActivity implements TitleBarView
             tableCol.value = Utils.getValueByTableColsId(tableCol.id);
         }
         totalData.addAll(tableColses);
-        adapter = new CollectDataAdapter(this, totalData, R.layout.item_collect_data);
+       // adapter = new CollectData2Adapter(this, totalData, R.layout.item_collect_data);
+        adapter = new CollectData2Adapter(this, totalData);
         listview.setAdapter(adapter);
 
 

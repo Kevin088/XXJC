@@ -31,7 +31,10 @@
             android:label="@string/generalLabel" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.BaoBiaoActivity" />
-        <activity android:name=".activity.CollectDatactivity"></activity>
+        <activity android:name=".activity.CollectDatactivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
     </application>
 
 </manifest>

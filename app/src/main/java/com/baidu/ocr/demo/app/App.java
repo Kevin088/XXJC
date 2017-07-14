@@ -8,6 +8,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.baidu.ocr.demo.FileUtil;
+import com.baidu.ocr.demo.MainActivity;
 import com.baidu.ocr.demo.utils.WriteToSD;
 import com.baidu.ocr.demo.utils.XmlParseUtil;
 
@@ -27,6 +28,7 @@ import java.util.List;
  */
 public class App extends Application{
     public static Context context;
+    public static MainActivity mainActivity;
     @Override
     public void onCreate() {
         super.onCreate();

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import com.baidu.ocr.demo.FileUtil;
 import com.baidu.ocr.demo.R;
 import com.baidu.ocr.demo.adapter.BaobiaoAdapter;
+import com.baidu.ocr.demo.app.App;
 import com.baidu.ocr.demo.bean.TableCols;
 import com.baidu.ocr.demo.bean.Tables;
 import com.baidu.ocr.demo.bean.User2Tables;
@@ -60,7 +63,7 @@ public class BaoBiaoActivity extends FragmentActivity implements TitleBarView.On
     }
     @Override
     public void onTitleBarClick(int titleId) {
-        finish();
+        btnBackClick();
     }
 
     @Override
@@ -82,5 +85,19 @@ public class BaoBiaoActivity extends FragmentActivity implements TitleBarView.On
     protected void onRestart() {
         super.onRestart();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            btnBackClick();
+        }
+        return false;
+    }
+    public void  btnBackClick(){
+        finish();
+        if(App.mainActivity!=null)
+            App.mainActivity.finish();
     }
 }

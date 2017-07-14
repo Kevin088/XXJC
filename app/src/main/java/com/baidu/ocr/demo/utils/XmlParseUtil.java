@@ -180,7 +180,7 @@ public class XmlParseUtil {
                         tableColsValue.tablename=pullParser.nextText();
                     }
                     if("colValue".equals(pullParser.getName())){
-                        tableColsValue.colValue= Integer.parseInt(pullParser.nextText());
+                        tableColsValue.colValue= Double.parseDouble(pullParser.nextText());
                     }
 
                     break;

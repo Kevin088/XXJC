@@ -17,7 +17,7 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <EditText
             android:id="@+id/tv_data"
             android:layout_toLeftOf="@+id/iv_see"
             android:layout_marginRight="20dp"
@@ -27,6 +27,7 @@
             android:textSize="16sp"
             android:paddingLeft="5dp"
             android:layout_centerVertical="true"
+            android:inputType="number"
             android:background="@drawable/bg_gray_slide"/>
         <ImageView
             android:id="@+id/iv_see"
@@ -34,6 +35,7 @@
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:src="@mipmap/ic_see"/>
     </RelativeLayout>
 </RelativeLayout>

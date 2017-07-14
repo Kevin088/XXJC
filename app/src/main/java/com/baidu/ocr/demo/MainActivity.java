@@ -5,6 +5,7 @@ package com.baidu.ocr.demo;
 
 import com.baidu.ocr.demo.activity.BaoBiaoActivity;
 import com.baidu.ocr.demo.activity.LoginActivity;
+import com.baidu.ocr.demo.app.App;
 import com.baidu.ocr.demo.config.DfhePreference;
 import com.baidu.ocr.demo.utils.XmlParseUtil;
 import com.baidu.ocr.sdk.OCR;
@@ -48,9 +49,12 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        App.mainActivity=this;
 
         if(!DfhePreference.getIsLogin()){
             startActivity(new Intent(this, LoginActivity.class));
+        }else{
+            startActivity(new Intent(MainActivity.this, BaoBiaoActivity.class));
         }
 
 
@@ -131,7 +135,7 @@ public class MainActivity extends FragmentActivity {
 
 
 
-        startActivity(new Intent(MainActivity.this, BaoBiaoActivity.class));
+
 
     }
 
@@ -252,4 +256,6 @@ public class MainActivity extends FragmentActivity {
         Process.killProcess(Process.myPid());
         System.exit(0);
     }
+
+
 }
