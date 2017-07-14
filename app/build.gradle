@@ -25,4 +25,5 @@ dependencies {
     compile files('libs/ocr-sdk.jar')
     compile project(path: ':ocr_ui')
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.google.code.gson:gson:2.6.2'
 }

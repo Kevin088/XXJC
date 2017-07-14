@@ -12,7 +12,7 @@ public class TableCols implements  Comparable{
     public int tableId;
     public int minNum;
     public int maxNum;
-    public int value;
+    public double value;
     public int tableColsValueId;
 
     @Override

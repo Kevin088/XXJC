@@ -1,5 +1,7 @@
 package com.baidu.ocr.demo.utils;
 
+import android.text.TextUtils;
+
 import com.baidu.ocr.demo.bean.TableCols;
 import com.baidu.ocr.demo.bean.TableColsValue;
 
@@ -31,7 +33,7 @@ public class Utils {
         return values;
     }
 
-    public static int getValueByTableColsId(int id){
+    public static double getValueByTableColsId(int id){
         for(TableColsValue tableColsValue:XmlParseUtil.tableColsValues){
             if(tableColsValue.colId==id){
                 return tableColsValue.colValue;
@@ -39,5 +41,25 @@ public class Utils {
         }
         return 0;
     }
-
+    public static double getValueFromStr(String str){
+        try {
+            if (TextUtils.isEmpty(str)) return 0;
+            char[] b = str.toCharArray();
+            String result = "";
+            for (int i = 0; i < b.length; i++)
+            {
+                if (("0123456789.").indexOf(b[i] + "") != -1)
+                {
+                    result += b[i];
+                }
+            }
+            if(TextUtils.isEmpty(result))
+                return 0;
+            else{
+                return Double.parseDouble(result);
+            }
+        }catch (Exception e){
+            return 0;
+        }
+    }
 }

@@ -130,12 +130,9 @@ public class MainActivity extends FragmentActivity {
         // OCR.getInstance().initWithToken(getApplicationContext(), "您获取的oauth access_token");
 
 
-        findViewById(R.id.parsexml).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            startActivity(new Intent(MainActivity.this, BaoBiaoActivity.class));
-            }
-        });
+
+        startActivity(new Intent(MainActivity.this, BaoBiaoActivity.class));
+
     }
 
     private void initAccessToken() {

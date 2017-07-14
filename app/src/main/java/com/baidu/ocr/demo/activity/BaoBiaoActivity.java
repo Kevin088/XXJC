@@ -75,17 +75,6 @@ public class BaoBiaoActivity extends FragmentActivity implements TitleBarView.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        List<TableCols>list= Utils.getTableColsInTable(table.id);
-        int isfullCaiji=1;
-        for(TableCols tableCol:list){
-            if(tableCol.value==0){
-                isfullCaiji=0;
-                break;
-            }
-        }
-        table.state=isfullCaiji;
-
-
         adapter.notifyDataSetChanged();
     }
 

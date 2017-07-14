@@ -214,7 +214,7 @@ public class XmlParseUtil {
     }
 
 
-    public static void save() throws Exception {
+    public static void saveDataSheetXml() throws Exception {
         OutputStream out=new FileOutputStream(FileUtil.xmlPath+FileUtil.xmlName2);
         XmlSerializer serializer = Xml.newSerializer();
         serializer.setOutput(out, "UTF-8");
@@ -250,5 +250,98 @@ public class XmlParseUtil {
         out.flush();
         out.close();
     }
+    public static void saveDefinitionXml() throws Exception {
+        OutputStream out=new FileOutputStream(FileUtil.xmlPath+FileUtil.xmlName1);
+        XmlSerializer serializer = Xml.newSerializer();
+        serializer.setOutput(out, "UTF-8");
+        serializer.startDocument("UTF-8", true);
+        serializer.startTag(null, "NewDataSet");
+        for (User user : users) {
+            serializer.startTag(null, "user");
 
+            serializer.startTag(null, "id");
+            serializer.text(user.id+"");
+            serializer.endTag(null, "id");
+
+            serializer.startTag(null, "username");
+            serializer.text(user.userName+"");
+            serializer.endTag(null, "username");
+
+            serializer.startTag(null, "name");
+            serializer.text(user.name+"");
+            serializer.endTag(null, "name");
+
+            serializer.startTag(null, "psw");
+            serializer.text(user.pwd+"");
+            serializer.endTag(null, "psw");
+
+            serializer.endTag(null, "user");
+        }
+        for (User2Tables user2Table : user2Tables) {
+            serializer.startTag(null, "user2tables");
+
+            serializer.startTag(null, "id");
+            serializer.text(user2Table.id+"");
+            serializer.endTag(null, "id");
+
+            serializer.startTag(null, "uid");
+            serializer.text(user2Table.uId+"");
+            serializer.endTag(null, "uid");
+
+            serializer.startTag(null, "tableId");
+            serializer.text(user2Table.tableId+"");
+            serializer.endTag(null, "tableId");
+
+            serializer.endTag(null, "user2tables");
+        }
+
+        for (Tables table : tables) {
+            serializer.startTag(null, "tables");
+
+            serializer.startTag(null, "id");
+            serializer.text(table.id+"");
+            serializer.endTag(null, "id");
+
+            serializer.startTag(null, "tablename");
+            serializer.text(table.tableName+"");
+            serializer.endTag(null, "tablename");
+
+            serializer.startTag(null, "state");
+            serializer.text(table.state+"");
+            serializer.endTag(null, "state");
+
+            serializer.endTag(null, "tables");
+        }
+
+        for (TableCols tableCol : tableCols) {
+            serializer.startTag(null, "tableCols");
+
+            serializer.startTag(null, "id");
+            serializer.text(tableCol.id+"");
+            serializer.endTag(null, "id");
+
+            serializer.startTag(null, "tColName");
+            serializer.text(tableCol.tColName+"");
+            serializer.endTag(null, "tColName");
+
+            serializer.startTag(null, "tableId");
+            serializer.text(tableCol.tableId+"");
+            serializer.endTag(null, "tableId");
+
+            serializer.startTag(null, "minNum");
+            serializer.text(tableCol.minNum+"");
+            serializer.endTag(null, "minNum");
+
+            serializer.startTag(null, "maxNum");
+            serializer.text(tableCol.maxNum+"");
+            serializer.endTag(null, "maxNum");
+
+            serializer.endTag(null, "tableCols");
+        }
+
+        serializer.endTag(null, "NewDataSet");
+        serializer.endDocument();
+        out.flush();
+        out.close();
+    }
 }
