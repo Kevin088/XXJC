@@ -51,7 +51,6 @@ public class MainActivity extends FragmentActivity {
 
         if(!DfhePreference.getIsLogin()){
             startActivity(new Intent(this, LoginActivity.class));
-            finish();
         }
 
 

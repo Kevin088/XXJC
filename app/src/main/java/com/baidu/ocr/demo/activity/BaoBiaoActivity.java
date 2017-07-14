@@ -13,9 +13,11 @@ import android.widget.ListView;
 import com.baidu.ocr.demo.FileUtil;
 import com.baidu.ocr.demo.R;
 import com.baidu.ocr.demo.adapter.BaobiaoAdapter;
+import com.baidu.ocr.demo.bean.TableCols;
 import com.baidu.ocr.demo.bean.Tables;
 import com.baidu.ocr.demo.bean.User2Tables;
 import com.baidu.ocr.demo.config.DfhePreference;
+import com.baidu.ocr.demo.utils.Utils;
 import com.baidu.ocr.demo.utils.WriteToSD;
 import com.baidu.ocr.demo.utils.XmlParseUtil;
 import com.baidu.ocr.demo.view.TitleBarView;
@@ -43,6 +45,8 @@ public class BaoBiaoActivity extends FragmentActivity implements TitleBarView.On
     LinearLayout activityBaoBiao;
     BaobiaoAdapter adapter;
     ArrayList<Tables>totalData=new ArrayList<>();
+    private Tables table;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +65,33 @@ public class BaoBiaoActivity extends FragmentActivity implements TitleBarView.On
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        int tableId=totalData.get(i).id;
+        table = totalData.get(i);
         Intent intent = new Intent(this, CollectDatactivity.class);
-        intent.putExtra("tableId",tableId);
+        intent.putExtra("tableId", table.id);
         intent.putExtra("tableName",totalData.get(i).tableName);
-        startActivity(intent);
+        startActivityForResult(intent,200);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        List<TableCols>list= Utils.getTableColsInTable(table.id);
+        int isfullCaiji=1;
+        for(TableCols tableCol:list){
+            if(tableCol.value==0){
+                isfullCaiji=0;
+                break;
+            }
+        }
+        table.state=isfullCaiji;
+
+
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
     }
 }
